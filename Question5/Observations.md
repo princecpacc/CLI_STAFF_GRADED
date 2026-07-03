@@ -9,3 +9,7 @@ The `mount` command displays all currently mounted file systems and their mount 
 ## Command: df -h
 
 The `df -h` command displays disk space usage in a human-readable format, including total, used, and available storage.
+
+## Command: df -i
+
+The `df -i` command displays inode usage for each mounted file system. It helps determine whether the system is running out of inodes.
