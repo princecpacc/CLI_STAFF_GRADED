@@ -1,0 +1,62 @@
+1. Open Files Identified
+prince@Princes-MacBook-Air-3 Question4 % lsof | head -20
+COMMAND     PID   USER   FD      TYPE             DEVICE  SIZE/OFF                NODE NAME
+loginwind   404 prince  cwd       DIR               1,18       704                   2 /
+loginwind   404 prince  txt       REG               1,18   3227536 1152921500312105867 /System/Library/CoreServices/loginwindow.app/Contents/MacOS/loginwindow
+loginwind   404 prince  txt       REG               1,18     73028            19030272 /Library/Preferences/Logging/.plist-cache.FFSPITR7
+loginwind   404 prince  txt       REG               1,14    422432              238348 /System/Volumes/Preboot/Cryptexes/OS/usr/lib/libLaunchServicesSupport.dylib
+loginwind   404 prince  txt       REG               1,18       688 1152921500312105896 /System/Library/CoreServices/loginwindow.app/Contents/Resources/InfoPlist.loctable
+loginwind   404 prince  txt       REG               1,18       110 1152921500312103377 /System/Library/CoreServices/SystemVersion.bundle/en_GB.lproj/SystemVersion.strings
+loginwind   404 prince  txt       REG               1,18    137016 1152921500312103066 /System/Library/CoreServices/SystemAppearance.bundle/Contents/Resources/SystemAppearance.car
+loginwind   404 prince  txt       REG               1,18    193408 1152921500312217590 /System/Library/LoginPlugins/FSDisconnect.loginPlugin/Contents/MacOS/FSDisconnect
+loginwind   404 prince  txt       REG               1,18    305376 1152921500312217540 /System/Library/LoginPlugins/DisplayServices.loginPlugin/Contents/MacOS/DisplayServices
+loginwind   404 prince  txt       REG               1,18    236112            14907645 /private/var/db/timezone/tz/2026b.1.0/icutz/icutz44l.dat
+loginwind   404 prince  txt       REG               1,18    255956 1152921500312160969 /System/Library/Frameworks/OpenDirectory.framework/Versions/A/Frameworks/CFOpenDirectory.framework/Versions/A/Resources/Localizable.loctable
+loginwind   404 prince  txt       REG               1,18    250306 1152921500312212600 /System/Library/Keyboard Layouts/AppleKeyboardLayouts.bundle/Contents/Resources/InfoPlist.loctable
+loginwind   404 prince  txt       REG               1,18    697279 1152921500312105942 /System/Library/CoreServices/loginwindow.app/Contents/Resources/loginwindow.loctable
+loginwind   404 prince  txt       REG               1,18     43227 1152921500312327202 /System/Library/PrivateFrameworks/LocalAuthenticationCore.framework/Versions/A/Resources/Localizable.loctable
+loginwind   404 prince  txt       REG               1,18     73240 1152921500312103051 /System/Library/CoreServices/SystemAppearance.bundle/Contents/Resources/FauxVibrantDark.car
+loginwind   404 prince  txt       REG               1,18   2374000 1152921500312573277 /usr/lib/dyld
+loginwind   404 prince  txt       REG               1,18  35444880 1152921500312583778 /usr/share/icu/icudt78l.dat
+loginwind   404 prince  txt       REG               1,18   7912984 1152921500312103027 /System/Library/CoreServices/SystemAppearance.bundle/Contents/Resources/Aqua.car
+loginwind   404 prince  txt       REG               1,18   2976648 1152921500312103055 /System/Library/CoreServices/SystemAppearance.bundle/Contents/Resources/FauxVibrantLight.car
+
+2. File Descriptor Observations
+prince@Princes-MacBook-Air-3 Question4 % ls -l /dev/fd
+total 0
+crw--w----  1 prince  tty    0x10000001  3 Jul 22:48 0
+crw--w----  1 prince  tty    0x10000001  3 Jul 22:48 1
+crw--w----  1 prince  tty    0x10000001  3 Jul 22:48 2
+dr--r--r--  7 prince  staff         224  3 Jul 22:47 3
+dr--r--r--  1 root    wheel           0 29 Jun 08:04 4
+
+3. Output Redirection
+prince@Princes-MacBook-Air-3 Question4 % echo "This is standard output" > output.txt
+prince@Princes-MacBook-Air-3 Question4 % cat output.txt
+This is standard output
+
+4. Error Redirection
+
+Command:
+ls nonexistentfile 2> error.txt
+
+Result:
+The error message was redirected to error.txt.
+
+5. Resource Limits
+
+prince@Princes-MacBook-Air-3 Question4 % ulimit -a
+-t: cpu time (seconds)              unlimited
+-f: file size (blocks)              unlimited
+-d: data seg size (kbytes)          unlimited
+-s: stack size (kbytes)             8176
+-c: core file size (blocks)         0
+-v: address space (kbytes)          unlimited
+-l: locked-in-memory size (kbytes)  unlimited
+-u: processes                       2666
+-n: file descriptors                256
+
+6. How Linux Manages File I/O
+
+Linux manages file input and output using file descriptors. Every open file, device, or socket is assigned a file descriptor. Standard input (0), standard output (1), and standard error (2) are the default descriptors used by all processes. Redirection operators allow these streams to be redirected to files or other devices.
+

@@ -1,0 +1,63 @@
+1. Available Storage Devices
+prince@Princes-MacBook-Air-3 Question5 % diskutil list
+/dev/disk0 (internal, physical):
+   #:                       TYPE NAME                    SIZE       IDENTIFIER
+   0:      GUID_partition_scheme                        *251.0 GB   disk0
+   1:             Apple_APFS_ISC Container disk1         524.3 MB   disk0s1
+   2:                 Apple_APFS Container disk3         245.1 GB   disk0s2
+   3:        Apple_APFS_Recovery Container disk2         5.4 GB     disk0s3
+
+/dev/disk3 (synthesized):
+   #:                       TYPE NAME                    SIZE       IDENTIFIER
+   0:      APFS Container Scheme -                      +245.1 GB   disk3
+                                 Physical Store disk0s2
+   1:                APFS Volume Macintosh HD            12.6 GB    disk3s1
+   2:              APFS Snapshot com.apple.os.update-... 12.6 GB    disk3s1s1
+   3:                APFS Volume Preboot                 9.1 GB     disk3s2
+   4:                APFS Volume Recovery                1.3 GB     disk3s3
+   5:                APFS Volume Data                    142.2 GB   disk3s5
+   6:                APFS Volume VM                      1.1 GB     disk3s6
+
+2. Mounted File Systems
+prince@Princes-MacBook-Air-3 Question5 % mount
+/dev/disk3s1s1 on / (apfs, sealed, local, read-only, journaled)
+devfs on /dev (devfs, local, nobrowse)
+/dev/disk3s6 on /System/Volumes/VM (apfs, local, noexec, journaled, noatime, nobrowse)
+/dev/disk3s2 on /System/Volumes/Preboot (apfs, local, journaled, nobrowse)
+/dev/disk3s4 on /System/Volumes/Update (apfs, local, journaled, nobrowse)
+/dev/disk1s2 on /System/Volumes/xarts (apfs, local, noexec, journaled, noatime, nobrowse)
+/dev/disk1s1 on /System/Volumes/iSCPreboot (apfs, local, journaled, nobrowse)
+/dev/disk1s3 on /System/Volumes/Hardware (apfs, local, journaled, nobrowse)
+/dev/disk3s5 on /System/Volumes/Data (apfs, local, journaled, nobrowse, protect, root data)
+map auto_home on /System/Volumes/Data/home (autofs, automounted, nobrowse)
+/Users/prince/Downloads/Sublime Text.app on /private/var/folders/n2/cc6ql8_1443g9mltmgyr3kv00000gn/T/AppTranslocation/6CD96352-5017-4B99-857D-2116DC12437A (nullfs, local, nodev, nosuid, read-only, nobrowse, mounted by prince)
+
+3. Disk Usage Statistics
+prince@Princes-MacBook-Air-3 Question5 % df -h
+Filesystem                                  Size    Used   Avail Capacity iused ifree %iused  Mounted on
+/dev/disk3s1s1                             228Gi    12Gi    73Gi    14%    459k  769M    0%   /
+devfs                                      202Ki   202Ki     0Bi   100%     698     0  100%   /dev
+/dev/disk3s6                               228Gi   1.0Gi    73Gi     2%       1  769M    0%   /System/Volumes/VM
+/dev/disk3s2                               228Gi   8.4Gi    73Gi    11%    1.4k  769M    0%   /System/Volumes/Preboot
+/dev/disk3s4                               228Gi   6.5Mi    73Gi     1%     106  769M    0%   /System/Volumes/Update
+/dev/disk1s2                               500Mi   6.0Mi   482Mi     2%       1  4.9M    0%   /System/Volumes/xarts
+/dev/disk1s1                               500Mi   5.8Mi   482Mi     2%      31  4.9M    0%   /System/Volumes/iSCPreboot
+/dev/disk1s3                               500Mi   1.0Mi   482Mi     1%     100  4.9M    0%   /System/Volumes/Hardware
+/dev/disk3s5                               228Gi   132Gi    73Gi    65%    1.7M  769M    0%   /System/Volumes/Data
+map auto_home                                0Bi     0Bi     0Bi   100%       0     0     -   /System/Volumes/Data/home
+/Users/prince/Downloads/Sublime Text.app   228Gi   135Gi    71Gi    66%    1.8M  745M    0%   /private/var/folders/n2/cc6ql8_1443g9mltmgyr3kv00000gn/T/AppTranslocation/6CD96352-5017-4B99-857D-2116DC12437A
+
+4. Inode Utilization
+prince@Princes-MacBook-Air-3 Question5 % df -i
+Filesystem                               512-blocks      Used Available Capacity iused     ifree %iused  Mounted on
+/dev/disk3s1s1                            478724992  24547912 153883648    14%  458725 769418240    0%   /
+devfs                                           403       403         0   100%     698         0  100%   /dev
+/dev/disk3s6                              478724992   2097264 153883648     2%       1 769418240    0%   /System/Volumes/VM
+/dev/disk3s2                              478724992  17692608 153883648    11%    1432 769418240    0%   /System/Volumes/Preboot
+/dev/disk3s4                              478724992     13392 153883648     1%     106 769418240    0%   /System/Volumes/Update
+/dev/disk1s2                                1024000     12328    988088     2%       1   4940440    0%   /System/Volumes/xarts
+/dev/disk1s1                                1024000     11800    988088     2%      31   4940440    0%   /System/Volumes/iSCPreboot
+/dev/disk1s3                                1024000      2064    988088     1%     100   4940440    0%   /System/Volumes/Hardware
+/dev/disk3s5                              478724992 277681456 153883648    65% 1746535 769418240    0%   /System/Volumes/Data
+map auto_home                                     0         0         0   100%       0         0     -   /System/Volumes/Data/home
+/Users/prince/Downloads/Sublime Text.app  478724992 282638456 148926016    66% 1756497 744630080    0%   /private/var/folders/n2/cc6ql8_1443g9mltmgyr3kv00000gn/T/AppTranslocation/6CD96352-5017-4B99-857D-2116DC12437A
