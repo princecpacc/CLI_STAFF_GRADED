@@ -1,0 +1,37 @@
+1. Username and Groups 
+prince@Princes-MacBook-Air-3 Question1 % clear
+prince@Princes-MacBook-Air-3 Question1 % id
+uid=501(prince) gid=20(staff) groups=20(staff),12(everyone),61(localaccounts),79(_appserverusr),80(admin),81(_appserveradm),33(_appstore),98(_lpadmin),100(_lpoperator),204(_developer),250(_analyticsusers),395(com.apple.access_ftp),398(com.apple.access_screensharing),399(com.apple.access_ssh),400(com.apple.access_remote_ae),701(com.apple.sharepoint.group.1)
+
+2. Current Shell
+prince@Princes-MacBook-Air-3 Question1 % echo $SHELL
+/bin/zsh
+
+3. Current Working Directory
+prince@Princes-MacBook-Air-3 Question1 % pwd
+/Users/prince/Desktop/CLI_STAFF_GRADED/Question1
+
+4. Files and Directories
+prince@Princes-MacBook-Air-3 Question1 % ls -la
+total 32
+drwxr-xr-x@ 6 prince  staff   192  3 Jul 09:22 .
+drwxr-xr-x@ 5 prince  staff   160  3 Jul 09:21 ..
+-rw-r--r--@ 1 prince  staff  6148  3 Jul 09:26 .DS_Store
+-rw-r--r--@ 1 prince  staff   678  3 Jul 09:30 Environment_Report.txt
+-rw-r--r--@ 1 prince  staff   356  3 Jul 09:27 Explanation.md
+drwxr-xr-x@ 5 prince  staff   160  3 Jul 09:30 screenshots
+prince@Princes-MacBook-Air-3 Question1 %
+
+5. Network Connectivity Verification
+prince@Princes-MacBook-Air-3 Question1 % ping -c 4 google.com
+PING google.com (142.250.29.113): 56 data bytes
+64 bytes from 142.250.29.113: icmp_seq=0 ttl=114 time=12.232 ms
+64 bytes from 142.250.29.113: icmp_seq=1 ttl=114 time=9.417 ms
+64 bytes from 142.250.29.113: icmp_seq=2 ttl=114 time=17.581 ms
+64 bytes from 142.250.29.113: icmp_seq=3 ttl=114 time=9.931 ms
+
+--- google.com ping statistics ---
+4 packets transmitted, 4 packets received, 0.0% packet loss
+round-trip min/avg/max/stddev = 9.417/12.290/17.581/3.233 ms
+prince@Princes-MacBook-Air-3 Question1 %
+
