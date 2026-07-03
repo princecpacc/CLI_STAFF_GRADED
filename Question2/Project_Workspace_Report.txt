@@ -1,0 +1,62 @@
+1. Directory Structure
+prince@Princes-MacBook-Air-3 question2 % find .
+.
+./screenshots
+./screenshots/.DS_Store
+./.DS_Store
+./Project_Workspace_Report.txt
+./Explanation.md
+./ProjectWorkspace
+./ProjectWorkspace/docs
+./ProjectWorkspace/docs/readme.txt
+./ProjectWorkspace/backup
+./ProjectWorkspace/backup/backup.txt
+./ProjectWorkspace/src
+./ProjectWorkspace/src/main.c
+prince@Princes-MacBook-Air-3 question2 %
+
+2. Permission Before Modification
+prince@Princes-MacBook-Air-3 question2 % ls -l
+total 16
+-rw-r--r--@ 1 prince  staff  185  3 Jul 10:06 Explanation.md
+-rw-r--r--@ 1 prince  staff  406  3 Jul 10:06 Project_Workspace_Report.txt
+drwxr-xr-x@ 5 prince  staff  160  3 Jul 09:55 ProjectWorkspace
+drwxr-xr-x@ 6 prince  staff  192  3 Jul 10:00 screenshots
+prince@Princes-MacBook-Air-3 question2 %
+
+3. Permission After Modification
+prince@Princes-MacBook-Air-3 ProjectWorkspace % chmod 700 docs
+chmod 755 src
+chmod 600 docs/readme.txt
+chmod 644 src/main.c
+chmod 600 backup/backup.txt
+prince@Princes-MacBook-Air-3 ProjectWorkspace % ls -l
+ls -l docs src backup
+total 0
+drwxr-xr-x@ 3 prince  staff  96  3 Jul 09:55 backup
+drwx------@ 3 prince  staff  96  3 Jul 09:55 docs
+drwxr-xr-x@ 3 prince  staff  96  3 Jul 09:55 src
+backup:
+total 0
+-rw-------@ 1 prince  staff  0  3 Jul 09:55 backup.txt
+
+docs:
+total 0
+-rw-------@ 1 prince  staff  0  3 Jul 09:55 readme.txt
+
+src:
+total 0
+-rw-r--r--@ 1 prince  staff  0  3 Jul 09:55 main.c
+
+4. Ownership Details
+prince@Princes-MacBook-Air-3 ProjectWorkspace % ls -l
+total 0
+drwxr-xr-x@ 3 prince  staff  96  3 Jul 09:55 backup
+drwx------@ 3 prince  staff  96  3 Jul 09:55 docs
+drwxr-xr-x@ 3 prince  staff  96  3 Jul 09:55 src
+
+5. Umask Value
+022
+
+6.How Permissions Protect Project Data
+Linux file permissions control who can read, write, and execute files and directories. By assigning restrictive permissions to sensitive files and appropriate permissions to shared resources, unauthorized access and accidental modifications are prevented.
