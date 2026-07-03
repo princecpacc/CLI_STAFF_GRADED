@@ -1,0 +1,44 @@
+1. Original File
+Linux Link Analysis
+
+2. Inode Numbers
+prince@Princes-MacBook-Air-3 Question3 % ls -li
+total 32
+19401108 -rw-r--r--@ 2 prince  staff   20  3 Jul 13:42 hardlink.txt
+19390929 -rw-r--r--@ 1 prince  staff   37  3 Jul 13:44 Link_Analysis_Report.txt
+19401108 -rw-r--r--@ 2 prince  staff   20  3 Jul 13:42 original.txt
+19390928 drwxr-xr-x@ 5 prince  staff  160  3 Jul 13:43 screenshots
+19390930 -rw-r--r--@ 1 prince  staff  144  3 Jul 13:43 Summary.md
+19401830 lrwxr-xr-x@ 1 prince  staff   12  3 Jul 13:44 symlink.txt -> original.txt
+
+3. Metadata
+prince@Princes-MacBook-Air-3 Question3 % stat original.txt hardlink.txt symlink.txt
+16777234 19401108 -rw-r--r-- 2 prince staff 0 20 "Jul  3 13:44:24 2026" "Jul  3 13:42:37 2026" "Jul  3 13:44:23 2026" "Jul  3 13:42:37 2026" 4096 8 0x40 original.txt
+16777234 19401108 -rw-r--r-- 2 prince staff 0 20 "Jul  3 13:44:24 2026" "Jul  3 13:42:37 2026" "Jul  3 13:44:23 2026" "Jul  3 13:42:37 2026" 4096 8 0x40 hardlink.txt
+16777234 19401830 lrwxr-xr-x 1 prince staff 0 12 "Jul  3 13:44:50 2026" "Jul  3 13:44:50 2026" "Jul  3 13:44:50 2026" "Jul  3 13:44:50 2026" 4096 0 0 symlink.txt
+prince@Princes-MacBook-Air-3 Question3 %
+
+4.
+Effect of Deleting the Original File
+
+After deleting the original file:
+
+- hardlink.txt still contains the data.
+- symlink.txt becomes a broken link and cannot access the file.
+
+Comparison Between Hard Link and Symbolic Link
+
+Hard Link
+- Shares the same inode as the original file.
+- Continues to work after deleting the original file.
+- Cannot span different file systems.
+
+Symbolic Link
+- Has its own inode.
+- Stores the path to the original file.
+- Breaks if the original file is deleted.
+- Can point across different file systems.
+
+Conclusion
+
+The experiment demonstrates that hard links reference the same inode as the original file, whereas symbolic links only reference its pathname. After deleting the original file, the hard link remained functional while the symbolic link became broken.
